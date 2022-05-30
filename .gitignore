@@ -15,3 +15,5 @@ mysite/mysite/settings/__pycache__/dev.cpython-310.pyc
 mysite/search/__pycache__/__init__.cpython-310.pyc
 mysite/search/__pycache__/views.cpython-310.pyc
 mysite/mysite/__pycache__/wsgi.cpython-310.pyc
+mysite/home/quiet.code-workspace
+mysite/home/migrations/__pycache__/0003_homepage_body.cpython-310.pyc
