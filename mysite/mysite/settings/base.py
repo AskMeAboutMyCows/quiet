@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "blog",
+    "wagtail.contrib.modeladmin", #this was on stack overflow not sure if it will fix
 ]
 
 MIDDLEWARE = [
