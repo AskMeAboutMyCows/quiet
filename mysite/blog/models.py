@@ -5,6 +5,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.search import index
 # Create your models here.
 
+"""
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -12,6 +13,18 @@ class BlogIndexPage(Page):
         FieldPanel('intro', classname="full")
     ]
     
+    this is the old way of doing it
+"""
+    
+class BlogIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        blogpages = self.get_children().live().order_by('-first_published_at')
+        context['blogpages'] = blogpages
+        return context
 #additional class for blog page
 
 class BlogPage(Page):
@@ -29,3 +42,5 @@ class BlogPage(Page):
         FieldPanel('intro'),
         FieldPanel('body', classname="full"),
     ]
+    
+  
