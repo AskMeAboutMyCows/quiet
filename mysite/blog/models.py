@@ -27,7 +27,8 @@ class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
-
+    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+    
     def main_image(self):
         gallery_item = self.gallery_images.first()
         if gallery_item:
@@ -41,11 +42,15 @@ class BlogPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
+        MultiFieldPanel([
+            FieldPanel('date'),
+            FieldPanel('tags'),
+        ], heading="Blog information"),
         FieldPanel('intro'),
-        FieldPanel('body', classname="full"),
+        FieldPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
     ]
+     
 class BlogPageGalleryImage(Orderable):
     page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='gallery_images')
     image = models.ForeignKey(
