@@ -14,7 +14,8 @@ class BlogPageTag(TaggedItemBase):
         'BlogPage',
         related_name='tagged_items',
         on_delete=models.CASCADE
-    )   
+    ) 
+          
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
