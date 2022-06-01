@@ -9,8 +9,12 @@ from taggit.models import TaggedItemBase
 
 # Create your models here.
 
-
-    
+class BlogPageTag(TaggedItemBase):
+        content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )   
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -63,9 +67,4 @@ class BlogPageGalleryImage(Orderable):
         FieldPanel('caption'),
     ]  
     
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey(
-        'BlogPage',
-        related_name='tagged_items',
-        on_delete=models.CASCADE
-    )
+
