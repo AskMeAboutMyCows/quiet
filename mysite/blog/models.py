@@ -3,6 +3,8 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.search import index
+from modelcluster.fields import ParentalKey
+
 # Create your models here.
 
 """
@@ -27,6 +29,7 @@ class BlogIndexPage(Page):
         return context
 #additional class for blog page
 
+"""
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
@@ -43,4 +46,23 @@ class BlogPage(Page):
         FieldPanel('body', classname="full"),
     ]
     
-  
+    this is the old way of doing it
+    """
+class BlogPage(Page):
+    date = models.DateField("Post date")
+    intro = models.CharField(max_length=250)
+    body = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('intro'),
+        FieldPanel('body', classname="full"),
+        InlinePanel('gallery_images', label="Gallery images"),
+    ]
+
+    
