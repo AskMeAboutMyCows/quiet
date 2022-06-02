@@ -73,6 +73,7 @@ class BlogPage(Page):
         MultiFieldPanel([
             FieldPanel('date'),
             FieldPanel('tags'),
+            FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         ], heading="Blog information"),
         FieldPanel('intro'),
         FieldPanel('body'),
