@@ -4,3 +4,6 @@ there will eventually be a vue or react front end on this
 
 # to do
  - need to fix template not found error 
+
+# Frontend 
+-tailwind
