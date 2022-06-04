@@ -7,3 +7,4 @@ there will eventually be a vue or react front end on this
 
 # Frontend 
 -tailwind
+-vue
